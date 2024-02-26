@@ -9,7 +9,7 @@ function flipLetter() {
         topFlap.querySelector('.letter').textContent = newChar;
         bottomFlap.querySelector('.letter').textContent = newChar;
         topFlap.style.transform = 'rotateX(0deg)';
-    }, 100);
+    }, 700);
 }
 
 function getNextChar(currentChar) {

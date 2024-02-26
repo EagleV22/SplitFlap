@@ -38,7 +38,7 @@ body, html {
 }
 
 .top .letter {
-    transform: translateY(50px);
+    transform: translateY(50px) rotateX(0deg);
 }
 
 .bottom .letter {
@@ -46,7 +46,7 @@ body, html {
 }
 
 .top {
-    border-bottom: 1px solid #222222;
+    transform-origin: bottom;
 }
 
 .bottom {
