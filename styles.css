@@ -13,6 +13,9 @@ body, html {
     border: 1px solid #222222;
     background-color: #444444;
     overflow: hidden;
+    font-size: 192px;
+    height: 200px;
+    width: 150px;
 }
 
 .flap {
@@ -21,15 +24,21 @@ body, html {
     align-items: center;
     color: white;
     height: 100px;
-    width: 200px;
-    background-color: #444444;
-    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
 }
 
-.top, .bottom {
-    flex: 1;
-    font-size: 96px;
-    line-height: 1;
+.letter {
+    display: block;
+    line-height: 200px;
+}
+
+.top .letter {
+    transform: translateY(50px);
+}
+
+.bottom .letter {
+    transform: translateY(-50px);
 }
 
 .top {
