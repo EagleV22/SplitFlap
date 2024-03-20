@@ -44,6 +44,10 @@ body, html {
 }
 
 .shadow .letter {
+    transform: translateY(50px);
+}
+
+.shadow .letter {
     transform: translateY(50px) rotateX(0deg);
 }
 
@@ -68,9 +72,9 @@ body, html {
 .shadow {
     position: absolute;
     top: 0;
-    z-index: 0; /* Stellen Sie sicher, dass es hinter den anderen Flaps liegt */
-    transform: scale(0.95); /* Optional: Verkleinern für den Tiefeneffekt */
-    opacity: 0.5; /* Optional: Reduzierte Opazität für den Hintergrundeindruck */
+    z-index: 0;
+    transform: scale(0.95);
+    opacity: 0.5;
 }
 
 .notransition {
