@@ -30,11 +30,13 @@ body, html {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.2s cubic-bezier(0.3, 0.0, 0.8, 0.8);
+    backface-visibility: hidden;
 }
 
 .letter {
     display: block;
     line-height: 100px;
+    transition: visibility 0s linear 0.35s;
 }
 
 .top .letter {

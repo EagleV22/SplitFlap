@@ -6,9 +6,14 @@ function flipLetter() {
     topFlap.style.transform = 'rotateX(-180deg)';
 
     setTimeout(() => {
+        topFlap.querySelector('.letter').style.visibility = 'hidden';
+    }, 350)
+
+    setTimeout(() => {
         topFlap.querySelector('.letter').textContent = newChar;
         bottomFlap.querySelector('.letter').textContent = newChar;
         topFlap.style.transform = 'rotateX(0deg)';
+        topFlap.querySelector('.letter').style.visibility = 'visible';
     }, 700);
 }
 
