@@ -24,94 +24,47 @@ body, html {
     justify-content: center;
     align-items: center;
     color: white;
+    background-color: red;
     height: 100px;
     width: 100%;
     overflow: hidden;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.2s cubic-bezier(0.3, 0.0, 0.8, 0.8);
-    backface-visibility: hidden;
-}
-
-.flap:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #666666;
-    z-index: -1;
-    transform: rotateX(0deg);
-    transform-origin: bottom;
-    transition: transform 0.2s cubic-bezier(0.3, 0.0, 0.8, 0.8), background-color 0.2s ease;
-}
-
-.top .letter, .bottom .letter {
-    position: relative;
-    z-index: 2;
 }
 
 .letter {
     display: block;
     line-height: 100px;
-    transition: visibility 0s linear 0.6s;
 }
+
 
 .top .letter {
     transform: translateY(50px) rotateX(0deg);
 }
 
 .bottom .letter {
-    position: relative;
     transform: translateY(-50px);
-    z-index: 1;
 }
+
 
 .top {
     transform-origin: bottom;
+
 }
 
 .bottom {
     border-top: 1px solid #222222;
-    position: relative;
-    transition: z-index 0s 0.6s;
 }
 
-.top.flipping:before {
-    transform: rotateX(-180deg);
-    background-color: #444444;
+.top .flap {
+    transform: translateY(50px) rotateX(0deg);
 }
 
-.bottom.covering::before {
-    content: "";
+.shadow {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #444444;
-    z-index: 2;
-    transition: top 0.6s ease-out;
+    z-index: 0; /* Stellen Sie sicher, dass es hinter den anderen Flaps liegt */
+    transform: scale(0.95); /* Optional: Verkleinern für den Tiefeneffekt */
+    opacity: 0.5; /* Optional: Reduzierte Opazität für den Hintergrundeindruck */
 }
-
-.bottom.covering::before {
-    top: 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
