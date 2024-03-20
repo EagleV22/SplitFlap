@@ -36,12 +36,19 @@ body, html {
 .letter {
     display: block;
     line-height: 100px;
-    transform: translateY(50px)
 }
 
 
 .top .letter {
+    transform: translateY(50px) rotateX(0deg);
+}
+
+.shadow .letter {
     transform: translateY(50px);
+}
+
+.shadow .letter {
+    transform: translateY(50px) rotateX(0deg);
 }
 
 .bottom .letter {
@@ -67,7 +74,7 @@ body, html {
     top: 0;
     z-index: 0; /* Stellen Sie sicher, dass es hinter den anderen Flaps liegt */
     transform: scale(0.95); /* Optional: Verkleinern für den Tiefeneffekt */
-    opacity: 1; /* Optional: Reduzierte Opazität für den Hintergrundeindruck */
+    opacity: 0.5; /* Optional: Reduzierte Opazität für den Hintergrundeindruck */
 }
 
 .notransition {

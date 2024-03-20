@@ -5,29 +5,32 @@ function flipLetter() {
     const currentChar = topFlap.querySelector('.letter').textContent.trim();
     const newChar = getNextCharBottom(currentChar);
 
-    // Vorbereitung der Schattenkarte mit dem nächsten Buchstaben
-    shadowFlap.querySelector('.letter').textContent = getNextCharBottom(currentChar);
+    shadowFlap.querySelector('.letter').textContent = getNextCharBottom(newChar);
 
-    topFlap.style.transform = 'rotateX(-180deg)';
+    topFlap.style.transform = 'rotateX(-90deg)';
     topFlap.style.zIndex = 2;
+    shadowFlap.querySelector('.letter').textContent = newChar
 
     setTimeout(() => {
-        // Die aktuelle obere Karte wird mit dem neuen Buchstaben aktualisiert
+        topFlap.style.transform = 'rotateX(-180deg)';
         topFlap.querySelector('.letter').textContent = newChar;
-        // Die untere Karte wird mit demselben neuen Buchstaben aktualisiert, um Konsistenz zu wahren
+    }, 500);
+
+
+    setTimeout(() => {
+        // topFlap.querySelector('.letter').textContent = newChar;
         bottomFlap.querySelector('.letter').textContent = newChar;
 
-        // Setzen Sie die Transformation der oberen Karte zurück, ohne sie visuell zurückzuklappen
-        topFlap.classList.add('notransition'); // Deaktivieren Sie vorübergehend Transitionen
+        topFlap.classList.add('notransition');
         topFlap.style.transform = 'rotateX(0deg)';
-        topFlap.offsetHeight; // Trigger reflow
-        topFlap.classList.remove('notransition'); // Aktivieren Sie Transitionen wieder
+        topFlap.offsetHeight;
+        topFlap.classList.remove('notransition');
 
         topFlap.style.zIndex = 1;
-        // Die Schattenkarte wird für den nächsten Buchstaben vorbereitet
+
         const nextChar = getNextCharBottom(newChar);
-        shadowFlap.querySelector('.letter').textContent = nextChar;
-    }, 700);
+        // shadowFlap.querySelector('.letter').textContent = nextChar;
+    }, 1000);
 }
 
 
