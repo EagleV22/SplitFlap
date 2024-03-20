@@ -43,6 +43,10 @@ body, html {
     transform: translateY(50px) rotateX(0deg);
 }
 
+.shadow .letter {
+    transform: translateY(50px) rotateX(0deg);
+}
+
 .bottom .letter {
     transform: translateY(-50px);
 }
