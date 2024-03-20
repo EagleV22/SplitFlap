@@ -9,6 +9,7 @@ function flipLetter() {
 
     topFlap.style.transform = 'rotateX(-90deg)';
     topFlap.style.zIndex = 2;
+    shadowFlap.querySelector('.letter').textContent = newChar
 
     setTimeout(() => {
         topFlap.style.transform = 'rotateX(-180deg)';
@@ -28,7 +29,7 @@ function flipLetter() {
         topFlap.style.zIndex = 1;
 
         const nextChar = getNextCharBottom(newChar);
-        shadowFlap.querySelector('.letter').textContent = nextChar;
+        // shadowFlap.querySelector('.letter').textContent = nextChar;
     }, 1000);
 }
 
