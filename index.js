@@ -9,9 +9,11 @@ function flipLetter() {
 
     topFlap.style.transform = 'rotateX(-90deg)';
     topFlap.style.zIndex = 2;
-    shadowFlap.querySelector('.letter').textContent = newChar
+    shadowFlap.querySelector('.letter').textContent = newChar;
 
     setTimeout(() => {
+        shadowFlap.querySelector('.letter').textContent = currentChar;
+
         topFlap.classList.add('notransition');
         topFlap.style.transform = 'rotateX(0deg)';
         topFlap.offsetHeight;
