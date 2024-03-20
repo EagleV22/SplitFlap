@@ -12,24 +12,25 @@ function flipLetter() {
     shadowFlap.querySelector('.letter').textContent = newChar
 
     setTimeout(() => {
-        topFlap.style.transform = 'rotateX(-180deg)';
-        topFlap.querySelector('.letter').textContent = newChar;
-    }, 500);
-
-
-    setTimeout(() => {
-        // topFlap.querySelector('.letter').textContent = newChar;
-        bottomFlap.querySelector('.letter').textContent = newChar;
-
         topFlap.classList.add('notransition');
         topFlap.style.transform = 'rotateX(0deg)';
         topFlap.offsetHeight;
         topFlap.classList.remove('notransition');
+        topFlap.querySelector('.letter').textContent = newChar;
+
+        bottomFlap.classList.add('notransition');
+        bottomFlap.style.transform = 'rotateX(90deg)';
+        bottomFlap.offsetHeight;
+        bottomFlap.classList.remove('notransition');
+        bottomFlap.querySelector('.letter').textContent = newChar;
+    }, 500);
+
+
+    setTimeout(() => {
+        bottomFlap.style.transform = 'rotateX(0deg)';
 
         topFlap.style.zIndex = 1;
 
-        const nextChar = getNextCharBottom(newChar);
-        // shadowFlap.querySelector('.letter').textContent = nextChar;
     }, 1000);
 }
 
