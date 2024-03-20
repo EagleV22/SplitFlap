@@ -6,7 +6,7 @@ function flipLetter() {
     const newChar = getNextCharBottom(currentChar);
 
     // Vorbereitung der Schattenkarte mit dem nächsten Buchstaben
-    shadowFlap.querySelector('.letter').textContent = getNextCharBottom(newChar);
+    shadowFlap.querySelector('.letter').textContent = getNextCharBottom(currentChar);
 
     topFlap.style.transform = 'rotateX(-180deg)';
     topFlap.style.zIndex = 2;
@@ -24,11 +24,10 @@ function flipLetter() {
         topFlap.classList.remove('notransition'); // Aktivieren Sie Transitionen wieder
 
         topFlap.style.zIndex = 1;
-
         // Die Schattenkarte wird für den nächsten Buchstaben vorbereitet
         const nextChar = getNextCharBottom(newChar);
         shadowFlap.querySelector('.letter').textContent = nextChar;
-    }, 200);
+    }, 700);
 }
 
 
