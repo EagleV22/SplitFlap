@@ -1,9 +1,9 @@
 function flipLetter() {
     const topFlap = document.querySelector('.split-flap .top');
     const bottomFlap = document.querySelector('.split-flap .bottom');
-    const shadowFlap = document.querySelector('.split-flap .shadow'); // Zugriff auf die Schattenkarte
+    const shadowFlap = document.querySelector('.split-flap .shadow');
     const currentChar = topFlap.querySelector('.letter').textContent.trim();
-    const newChar = getNextCharBottom(currentChar); // Der nächste Buchstabe, der angezeigt wird
+    const newChar = getNextCharBottom(currentChar);
 
     shadowFlap.querySelector('.letter').textContent = newChar;
 
@@ -15,7 +15,7 @@ function flipLetter() {
         bottomFlap.querySelector('.letter').textContent = newChar;
         topFlap.style.transform = 'rotateX(0deg)';
         topFlap.style.zIndex = 1;
-    }, 200); // Passen Sie diesen Wert an die Dauer Ihrer CSS-Übergänge an
+    }, 400);
 }
 
 function getNextCharBottom(currentChar) {

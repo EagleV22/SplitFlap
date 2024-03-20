@@ -30,7 +30,7 @@ body, html {
     overflow: hidden;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.2s cubic-bezier(0.3, 0.0, 0.8, 0.8);
+    transition: transform 0.4s cubic-bezier(0.3, 0.0, 0.8, 0.8);
 }
 
 .letter {
