@@ -72,3 +72,7 @@ body, html {
     transform: scale(0.95); /* Optional: Verkleinern für den Tiefeneffekt */
     opacity: 0.5; /* Optional: Reduzierte Opazität für den Hintergrundeindruck */
 }
+
+.notransition {
+    transition: none;
+}
