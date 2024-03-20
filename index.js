@@ -6,10 +6,17 @@ function flipLetter() {
     topFlap.style.transform = 'rotateX(-180deg)';
 
     setTimeout(() => {
+        bottomFlap.style.zIndex = '0';
+        bottomFlap.classList.add('covering');
+    }, 600);
+
+    setTimeout(() => {
         topFlap.querySelector('.letter').textContent = newChar;
         bottomFlap.querySelector('.letter').textContent = newChar;
         topFlap.style.transform = 'rotateX(0deg)';
-    }, 700);
+        bottomFlap.classList.remove('covering');
+        bottomFlap.style.zIndex = '';
+    }, 1200);
 }
 
 function getNextChar(currentChar) {
