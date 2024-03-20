@@ -25,7 +25,7 @@ function flipLetter() {
         bottomFlap.offsetHeight;
         bottomFlap.classList.remove('notransition');
         bottomFlap.querySelector('.letter').textContent = newChar;
-    }, 500);
+    }, 200);
 
 
     setTimeout(() => {
@@ -33,7 +33,7 @@ function flipLetter() {
 
         topFlap.style.zIndex = 1;
 
-    }, 1000);
+    }, 400);
 }
 
 
