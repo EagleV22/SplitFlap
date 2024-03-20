@@ -7,11 +7,17 @@ function flipLetter() {
 
     shadowFlap.querySelector('.letter').textContent = getNextCharBottom(newChar);
 
-    topFlap.style.transform = 'rotateX(-180deg)';
+    topFlap.style.transform = 'rotateX(-90deg)';
     topFlap.style.zIndex = 2;
 
     setTimeout(() => {
+        topFlap.style.transform = 'rotateX(-180deg)';
         topFlap.querySelector('.letter').textContent = newChar;
+    }, 500);
+
+
+    setTimeout(() => {
+        // topFlap.querySelector('.letter').textContent = newChar;
         bottomFlap.querySelector('.letter').textContent = newChar;
 
         topFlap.classList.add('notransition');
@@ -23,7 +29,7 @@ function flipLetter() {
 
         const nextChar = getNextCharBottom(newChar);
         shadowFlap.querySelector('.letter').textContent = nextChar;
-    }, 700);
+    }, 1000);
 }
 
 
