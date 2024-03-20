@@ -4,7 +4,7 @@ function flipLetter() {
     const shadowFlap = document.querySelector('.split-flap .shadow'); // Zugriff auf die Schattenkarte
     const newCharBottom = getNextCharBottom(topFlap.querySelector('.letter').textContent.trim());
 
-    /
+    // Aktualisieren der Schattenkarte zum neuen Buchstaben
     shadowFlap.querySelector('.letter').textContent = getNextCharBottom(newCharBottom);
 
     topFlap.style.transform = 'rotateX(-180deg)';
