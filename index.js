@@ -9,9 +9,11 @@ function flipLetter() {
 
     topFlap.style.transform = 'rotateX(-90deg)';
     topFlap.style.zIndex = 2;
-    shadowFlap.querySelector('.letter').textContent = newChar
+    shadowFlap.querySelector('.letter').textContent = newChar;
 
     setTimeout(() => {
+        shadowFlap.querySelector('.letter').textContent = currentChar;
+
         topFlap.classList.add('notransition');
         topFlap.style.transform = 'rotateX(0deg)';
         topFlap.offsetHeight;
@@ -23,7 +25,7 @@ function flipLetter() {
         bottomFlap.offsetHeight;
         bottomFlap.classList.remove('notransition');
         bottomFlap.querySelector('.letter').textContent = newChar;
-    }, 500);
+    }, 200);
 
 
     setTimeout(() => {
@@ -31,7 +33,7 @@ function flipLetter() {
 
         topFlap.style.zIndex = 1;
 
-    }, 1000);
+    }, 400);
 }
 
 
