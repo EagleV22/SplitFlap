@@ -8,13 +8,15 @@
 </head>
 <body>
 
-<div class="split-flap" onclick="flipLetter()">
-    <div class="flap shadow"><span class="letter">B</span></div>
-    <div class="flap top"><span class="letter">A</span></div>
-    <div class="flap bottom"><span class="letter">A</span></div>
-</div>
+<script src="Elements/SplitFlapDisplay.js"></script>
 
-<script src="index.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const displayContainer = document.querySelector('body');
+        const splitFlap = new SplitFlapDisplay(displayContainer, 'A');
+        splitFlap.flipToCharacter('0');
+    })
+</script>
 
 </body>
 </html>
