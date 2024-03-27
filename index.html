@@ -8,15 +8,21 @@
 </head>
 <body>
 
-<script src="Elements/SplitFlapDisplay.js"></script>
+    <script src="Elements/SplitFlapDisplay.js"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const displayContainer = document.querySelector('body');
-        const splitFlap = new SplitFlapDisplay(displayContainer, 'A');
-        splitFlap.flipToCharacter('0');
-    })
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const displayContainer = document.querySelector('body');
+            const splitFlap = new SplitFlapDisplay(displayContainer, 'A');
+            splitFlap.flipToCharacter('0');
+        })
+    </script>
+
+    <input id="timeInput" type="text" placeholder="HHmm" pattern="\d{4}" />
+    <button onclick="addTime()">Add Time</button>
+    <ul id="timeList"></ul>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
