@@ -28,7 +28,7 @@ class SplitFlapDisplay {
             } else {
                 this.flipLetter();
             }
-        }, 400);
+        }, 700);
     }
 
     flipLetter() {
