@@ -9,14 +9,16 @@ function addTime() {
     const timeInput = document.getElementById('timeInput');
     const time = timeInput.value;
 
-    if (!/^\d{4}$/.test(time) || parseInt(time.substring(0, 2)) > 23 || parseInt(time.substring(2, 4)) > 59) {
-        alert("Please enter a valid time in HHmm format.");
+    if (!/^\d{4}$/.test(time) || parseInt(time.substring(0,2)) > 23 || parseInt(time.substring(2,4)) > 59) {
+        alert("Please enter a valid time in HHmm Format.");
     }
 
-    const listItem = document.createElement('li');
-    listItem.textContent = formatTime(time);
-    listItem.setAttribute('onclick', 'editTime(this)');
-    document.getElementById('timeList').appendChild(listItem);
+    const clockContainer = document.createElement('div');
+    clockContainer.className = 'clock-container';
+    document.body.appendChild(clockContainer);
+
+    new Clock(clockContainer, time);
+
     timeInput.value = '';
 }
 

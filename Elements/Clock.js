@@ -1,10 +1,11 @@
 class Clock {
-    constructor(inputElement, clockContainer) {
-        this.inputElement = inputElement;
+    constructor(clockContainer, timeString) {
         this.clockContainer = clockContainer;
         this.flapDisplays = [];
         this.initDisplays();
-        this.attachInputListener();
+        if (timeString) {
+            this.setTime(timeString);
+        }
     }
 
     initDisplays() {
@@ -14,13 +15,10 @@ class Clock {
         }
     }
 
-    attachInputListener() {
-        this.inputElement.addEventListener('input', (e) => {
-            const time = e.target.value;
-            if (time.length === 4 && /^[0-2][0-9][0-5][0-9]$/.test(time)) {
-                this.updateDisplays(time);
-            }
-        });
+    setTime(timeString) {
+        if (timeString.length === 4 && /^[0-2][0-9][0-5][0-9]$/.test(timeString)) {
+            this.updateDisplays(timeString);
+        }
     }
 
     updateDisplays(time) {
