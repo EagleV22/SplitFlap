@@ -2,27 +2,27 @@ class DepartureField {
     constructor(fieldContainer, initialString) {
         this.fieldContainer = fieldContainer;
         this.flapDisplays = [];
-        this.initDisplays();
+        this.initDepDisplays();
         if (initialString) {
-            this.setString(initialString);
+            this.setDepString(initialString);
         }
     }
 
-    initDisplays() {
+    initDepDisplays() {
         for (let i = 0; i < 20; i++) {
-            const display = new SplitFlapDisplay(this.fieldContainer, ' ');
+            const display = new SplitFlapDisplay(this.fieldContainer, 'A');
             this.flapDisplays.push(display);
         }
     }
 
-    setString(string) {
+    setDepString(string) {
         const trimmedString = string.substring(0, 20);
         const paddedString = trimmedString.padStart(20, ' ');
 
-        this.updateDisplays(paddedString);
+        this.updateDepDisplays(paddedString);
     }
 
-    updateDisplays(string) {
+    updateDepDisplays(string) {
         for (let i = 0; i < this.flapDisplays.length; i++) {
             const char = string[i] || ' ';
             this.flapDisplays[i].flipToCharacter(char);
