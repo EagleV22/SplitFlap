@@ -15,7 +15,9 @@ function addTime() {
 
     const clockContainer = document.createElement('div');
     clockContainer.className = 'clock-container';
-    document.body.appendChild(clockContainer);
+
+    const timeListContainer = document.getElementById('timeListContainer');
+    timeListContainer.appendChild(clockContainer);
 
     new Clock(clockContainer, time);
 
