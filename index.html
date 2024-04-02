@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Split Flap</title>
+
     <link rel="stylesheet" href="Elements/flaps.css">
     <link rel="stylesheet" href="Elements/clock.css">
+    <link rel="stylesheet" href="home.css">
 
     <script src="Elements/SplitFlapDisplay.js"></script>
     <script src="Elements/Clock.js"></script>
@@ -13,9 +15,10 @@
 </head>
 <body>
 
-    <input id="timeInput" type="text" placeholder="HHmm" pattern="\d{4}" />
-    <button onclick="addTime()">Add Time</button>
-    <ul id="timeList"></ul>
+    <div class="topbar">
+        <input id="timeInput" type="text" placeholder="HHmm" pattern="\d{4}" />
+        <button onclick="addTime()">Add Time</button>
+    </div>
     <div id="timeListContainer" class="time-list-container"></div>
 
 </body>

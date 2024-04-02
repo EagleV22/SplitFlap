@@ -31,7 +31,7 @@ function formatTime(timeStr) {
 function editTime(item) {
     const newTime = prompt("Edit Time:", item.textContent.replace(':', ''));
     if (newTime !== null && newTime !== '') {
-        if (!/^\d{4}$/.test(time) || parseInt(time.substring(0, 2)) > 23 || parseInt(time.substring(2, 4)) > 59) {
+        if (!/^\d{4}$/.test(newTime) || parseInt(newTime.substring(0, 2)) > 23 || parseInt(newTime.substring(2, 4)) > 59) {
             alert("Please enter a valid time in HHmm format.");
         } else {
             item.textContent = formatTime(newTime);
