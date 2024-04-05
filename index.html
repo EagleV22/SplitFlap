@@ -33,7 +33,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const boardContainer = document.getElementById('splitFlapBoard');
             const board = new SplitFlapBoard(boardContainer);
-            board.addRow();
 
             document.getElementById('updateRowButton').addEventListener('click', function() {
                 const time1     = document.getElementById('time1Input').value;
@@ -46,7 +45,13 @@
                     return;
                 }
 
+                board.addRow();
                 board.updateRow(0, time1, string1, time2, string2);
+
+                document.getElementById('time1Input').value = '';
+                document.getElementById('string1Input').value = '';
+                document.getElementById('time2Input').value = '';
+                document.getElementById('string2Input').value = '';
             });
         });
     </script>
