@@ -28,7 +28,7 @@ class ClockFlap {
             } else {
                 this.flipLetter();
             }
-        }, 150);
+        }, 700);
     }
 
     flipLetter() {
@@ -55,12 +55,12 @@ class ClockFlap {
             this.bottomFlap.offsetHeight;
             this.bottomFlap.classList.remove('notransition');
             this.bottomFlap.querySelector('.letter').textContent = newChar;
-        }, 20);
+        }, 200);
 
         setTimeout(() => {
             this.bottomFlap.style.transform = 'rotateX(0deg)';
             this.topFlap.style.zIndex = 1;
-        }, 40);
+        }, 400);
 
     }
 
