@@ -17,6 +17,7 @@ class SplitFlapBoard {
         const rowElement = document.createElement('div');
         rowElement.className = 'row';
         this.parentElement.appendChild(rowElement);
+        const rowIndex = this.rows.length;
 
         const row = {
             time1: [],
@@ -47,6 +48,10 @@ class SplitFlapBoard {
             row.string2.push(new SplitFlapDisplay(rowElement, ' '));
         }
 
+        rowElement.addEventListener('click', () => {
+            this.selectRow(rowIndex);
+        });
+
         this.rows.push(row);
     }
 
@@ -58,6 +63,18 @@ class SplitFlapBoard {
         this.setDisplayContent(row.string1, string1);
         this.setDisplayContent(row.time2, time2);
         this.setDisplayContent(row.string2, string2);
+    }
+
+    selectRow(rowIndex) {
+        this.rows.forEach((row, index) => {
+            const rowElement = this.parentElement.children[index + 1];
+            rowElement.classList.remove('selected');
+        });
+
+        const selectedRowElement = this.parentElement.children[rowIndex + 1];
+        selectedRowElement.classList.add('selected');
+
+        this.selectedRowIndex = rowIndex;
     }
 
     setDisplayContent(displayArray, content) {

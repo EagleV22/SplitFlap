@@ -45,9 +45,13 @@
                     return;
                 }
 
-                board.addRow();
-                const newRowIdx = board.rows.length - 1;
-                board.updateRow(newRowIdx, time1, string1, time2, string2);
+                if (typeof board.selectedRowIndex === 'number') {
+                    board.updateRow(board.selectedRowIndex, time1, string1, time2, string2);
+                } else {
+                    board.addRow();
+                    const newRowIdx = board.rows.length - 1;
+                    board.updateRow(newRowIdx, time1, string1, time2, string2);
+                }
 
                 document.getElementById('time1Input').value = '';
                 document.getElementById('string1Input').value = '';
