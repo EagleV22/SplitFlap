@@ -48,6 +48,8 @@ class SplitFlapBoard {
             row.string2.push(new SplitFlapDisplay(rowElement, ' '));
         }
 
+        row.rawValues = { time1: '', string1: '', time2: '', string2: '' };
+
         rowElement.addEventListener('click', () => {
             this.selectRow(rowIndex);
         });
@@ -59,6 +61,7 @@ class SplitFlapBoard {
         if (rowIndex < 0 || rowIndex >= this.rows.length) return;
 
         const row = this.rows[rowIndex];
+        row.rawValues = { time1, string1, time2, string2 };
         this.setDisplayContent(row.time1, time1);
         this.setDisplayContent(row.string1, string1);
         this.setDisplayContent(row.time2, time2);
@@ -73,6 +76,12 @@ class SplitFlapBoard {
 
         const selectedRowElement = this.parentElement.children[rowIndex + 1];
         selectedRowElement.classList.add('selected');
+
+        const selectedRowValues = this.rows[rowIndex].rawValues;
+        document.getElementById('time1Input').value = selectedRowValues.time1;
+        document.getElementById('string1Input').value = selectedRowValues.string1;
+        document.getElementById('time2Input').value = selectedRowValues.time2;
+        document.getElementById('string2Input').value = selectedRowValues.string2;
 
         this.selectedRowIndex = rowIndex;
     }
