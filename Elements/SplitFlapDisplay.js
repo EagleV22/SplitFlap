@@ -28,7 +28,7 @@ class SplitFlapDisplay {
             } else {
                 this.flipLetter();
             }
-        }, 700);
+        }, 400);
     }
 
     flipLetter() {
@@ -55,12 +55,12 @@ class SplitFlapDisplay {
             this.bottomFlap.offsetHeight;
             this.bottomFlap.classList.remove('notransition');
             this.bottomFlap.querySelector('.letter').textContent = newChar;
-        }, 200);
+        }, 50);
 
         setTimeout(() => {
             this.bottomFlap.style.transform = 'rotateX(0deg)';
             this.topFlap.style.zIndex = 1;
-        }, 400);
+        }, 100);
 
     }
 
