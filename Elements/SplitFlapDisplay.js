@@ -23,7 +23,7 @@ class SplitFlapDisplay {
     flipToCharacter(targetChar) {
         const flipInterval = setInterval(() => {
             const currentChar = this.topFlap.querySelector('.letter').textContent.trim();
-            if (currentChar === targetChar) {
+            if (currentChar === targetChar || (targetChar === ' ' && currentChar === '')) {
                 clearInterval(flipInterval);
             } else {
                 this.flipLetter();

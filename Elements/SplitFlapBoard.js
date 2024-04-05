@@ -10,7 +10,7 @@ class SplitFlapBoard {
         titleRow.innerHTML = `<div class="title">Departure</div><div class="title">Arrival</div>`;
         this.parentElement.appendChild(titleRow);
 
-        this.addRow();
+        /*this.addRow();*/
     }
 
     addRow() {
@@ -62,7 +62,7 @@ class SplitFlapBoard {
 
     setDisplayContent(displayArray, content) {
         for (let i = 0; i < displayArray.length; i++) {
-            const character = content[i] || '-';
+            const character = content[i] || '-' || '';
             displayArray[i].flipToCharacter(character);
         }
     }

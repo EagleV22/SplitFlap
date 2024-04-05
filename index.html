@@ -26,16 +26,25 @@
     <div id="splitFlapBoard"></div>
 
     <script>
+        function isValidTime(time) {
+            return /^\d{4}$/.test(time) && time >= '0000' && time <= '2359';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const boardContainer = document.getElementById('splitFlapBoard');
             const board = new SplitFlapBoard(boardContainer);
             board.addRow();
 
             document.getElementById('updateRowButton').addEventListener('click', function() {
-                const time1 = document.getElementById('time1Input').value;
-                const string1 = document.getElementById('string1Input').value;
-                const time2 = document.getElementById('time2Input').value;
-                const string2 = document.getElementById('string2Input').value;
+                const time1     = document.getElementById('time1Input').value;
+                const string1   = document.getElementById('string1Input').value.toUpperCase();
+                const time2     = document.getElementById('time2Input').value;
+                const string2   = document.getElementById('string2Input').value.toUpperCase();
+
+                if (!isValidTime(time1) || !isValidTime(time2)) {
+                    alert('Please enter valid times in HHMM format.');
+                    return;
+                }
 
                 board.updateRow(0, time1, string1, time2, string2);
             });
