@@ -1,7 +1,7 @@
 class SplitFlapDisplay {
     constructor(parentElement, initialChar) {
         this.parentElement = parentElement;
-        this.alphabet = ' 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        this.alphabet = ' 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-';
         this.createFlaps(initialChar);
     }
 

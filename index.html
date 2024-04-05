@@ -6,21 +6,41 @@
     <title>Split Flap</title>
 
     <link rel="stylesheet" href="Elements/flaps.css">
-    <link rel="stylesheet" href="Elements/clock.css">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="Elements/display.css">
 
     <script src="Elements/SplitFlapDisplay.js"></script>
-    <script src="Elements/Clock.js"></script>
-    <script src="script.js"></script>
+    <script src="Elements/SplitFlapBoard.js"></script>
 </head>
 <body>
 
-    <div class="topbar">
-        <input id="timeInput" type="text" placeholder="HHmm" pattern="\d{4}" />
-        <input id="departureInput" type="text" placeholder="Departure" />
-        <button onclick="addTime()">Add Time</button>
+    <div id="inputs">
+        <input type="text" id="time1Input" placeholder="Departure Time (HHMM)">
+        <input type="text" id="string1Input" placeholder="Destination">
+        <input type="text" id="time2Input" placeholder="Arrival Time (HHMM)">
+        <input type="text" id="string2Input" placeholder="Origin">
+
+        <button id="updateRowButton">Update Row</button>
     </div>
-    <div id="timeListContainer" class="time-list-container"></div>
+
+    <div id="splitFlapBoard"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const boardContainer = document.getElementById('splitFlapBoard');
+            const board = new SplitFlapBoard(boardContainer);
+            board.addRow();
+
+            document.getElementById('updateRowButton').addEventListener('click', function() {
+                const time1 = document.getElementById('time1Input').value;
+                const string1 = document.getElementById('string1Input').value;
+                const time2 = document.getElementById('time2Input').value;
+                const string2 = document.getElementById('string2Input').value;
+
+                board.updateRow(0, time1, string1, time2, string2);
+            });
+        });
+    </script>
 
 </body>
 </html>

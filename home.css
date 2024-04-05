@@ -5,37 +5,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.topbar {
-    position: sticky;
-    top: 0;
-    background-color: #333333;
-    padding: 10px 0;
+#splitFlapBoard {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: start;
-    z-index: 1000;
-    width: 100%;
-}
-
-.topbar input[type="text"] {
-    margin-left: 20px;
-    padding: 8px;
-    background-color: #555555;
-    border: none;
-    color: white;
-}
-
-.topbar button {
-    padding: 8px 15px;
-    margin-left: 10px;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-.topbar button:hover {
-    background-color: #0056b3;
+    gap: 2px;
 }
 
 

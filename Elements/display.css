@@ -1,0 +1,8 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 1px;
+    left: 100px;
+    margin-left: 200px;
+}
+
