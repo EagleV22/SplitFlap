@@ -27,7 +27,7 @@ class SplitFlapBoard {
         };
 
         for (let i = 0; i < 4; i++) {
-            row.time1.push(new SplitFlapDisplay(rowElement, '0'));
+            row.time1.push(new ClockFlap(rowElement, '0'));
         }
 
         new SplitFlapDisplay(rowElement, ' ');
@@ -39,7 +39,7 @@ class SplitFlapBoard {
         new SplitFlapDisplay(rowElement, ' ');
 
         for (let i = 0; i < 4; i++) {
-            row.time2.push(new SplitFlapDisplay(rowElement, '0'));
+            row.time2.push(new ClockFlap(rowElement, '0'));
         }
 
         new SplitFlapDisplay(rowElement, ' ');

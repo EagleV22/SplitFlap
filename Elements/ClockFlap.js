@@ -1,7 +1,7 @@
-class SplitFlapDisplay {
+class ClockFlap {
     constructor(parentElement, initialChar) {
         this.parentElement = parentElement;
-        this.alphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ-';
+        this.alphabet = '0123456789';
         this.createFlaps(initialChar);
     }
 
