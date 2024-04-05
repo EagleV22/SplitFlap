@@ -54,6 +54,24 @@
                     board.updateRow(newRowIdx, time1, string1, time2, string2);
                 }
 
+                const sortedRowData = board.rows.map(row => row.rawValues)
+                    .sort((a, b) => a.time1.localeCompare(b.time1));
+
+                sortedRowData.forEach((sortedRow, index) => {
+                    board.updateRow(index, sortedRow.time1, sortedRow.string1, sortedRow.time2, sortedRow.string2);
+                });
+
+                if (typeof board.selectedRowIndex === 'number') {
+                    const selectedRowData = board.rows[board.selectedRowIndex].rawValues;
+                    const newSelectedIndex = sortedRowData.findIndex(row =>
+                        row.time1 === selectedRowData.time1 &&
+                        row.string1 === selectedRowData.string1 &&
+                        row.time2 === selectedRowData.time2 &&
+                        row.string2 === selectedRowData.string2
+                    );
+                    board.selectRow(newSelectedIndex);
+                }
+
                 document.getElementById('time1Input').value = '';
                 document.getElementById('string1Input').value = '';
                 document.getElementById('time2Input').value = '';
@@ -64,3 +82,16 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
