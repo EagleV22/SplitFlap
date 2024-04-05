@@ -20,7 +20,7 @@
         <input type="text" id="time2Input" placeholder="Arrival Time (HHMM)">
         <input type="text" id="string2Input" placeholder="Origin">
 
-        <button id="updateRowButton">Update Row</button>
+        <button id="addRowButton">Add Row</button>
     </div>
 
     <div id="splitFlapBoard"></div>
@@ -34,7 +34,7 @@
             const boardContainer = document.getElementById('splitFlapBoard');
             const board = new SplitFlapBoard(boardContainer);
 
-            document.getElementById('updateRowButton').addEventListener('click', function() {
+            document.getElementById('addRowButton').addEventListener('click', function() {
                 const time1     = document.getElementById('time1Input').value;
                 const string1   = document.getElementById('string1Input').value.toUpperCase();
                 const time2     = document.getElementById('time2Input').value;
@@ -46,7 +46,8 @@
                 }
 
                 board.addRow();
-                board.updateRow(0, time1, string1, time2, string2);
+                const newRowIdx = board.rows.length - 1;
+                board.updateRow(newRowIdx, time1, string1, time2, string2);
 
                 document.getElementById('time1Input').value = '';
                 document.getElementById('string1Input').value = '';
