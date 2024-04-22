@@ -1,9 +1,8 @@
 class SplitFlapDisplay {
-    constructor(parentElement, initialChar, scheduler) {
+    constructor(parentElement, initialChar) {
         this.parentElement = parentElement;
         this.alphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ-';
         this.createFlaps(initialChar);
-        this.scheduler = scheduler;
     }
 
     createFlaps(initialChar) { //Flap Display
