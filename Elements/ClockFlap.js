@@ -6,6 +6,7 @@ class ClockFlap {
     }
 
     createFlaps(initialChar) {
+        console.log('Creating flaps for character:', initialChar);
         const flapContainer = document.createElement('div');
         flapContainer.className = 'split-flap';
         flapContainer.innerHTML = `
@@ -13,6 +14,7 @@ class ClockFlap {
             <div class="flap top"><span class="letter">${initialChar}</span></div>
             <div class="flap bottom"><span class="letter">${initialChar}</span></div>
         `;
+        console.log('Appending flapContainer to parentElement');
         this.parentElement.appendChild(flapContainer);
 
         this.topFlap = flapContainer.querySelector('.top');
@@ -69,25 +71,3 @@ class ClockFlap {
         return this.alphabet[(currentIndex + 1) % this.alphabet.length];
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

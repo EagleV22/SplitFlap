@@ -1,11 +1,12 @@
 class SplitFlapDisplay {
-    constructor(parentElement, initialChar) {
+    constructor(parentElement, initialChar, scheduler) {
         this.parentElement = parentElement;
         this.alphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ-';
         this.createFlaps(initialChar);
+        this.scheduler = scheduler;
     }
 
-    createFlaps(initialChar) {
+    createFlaps(initialChar) { //Flap Display
         const flapContainer = document.createElement('div');
         flapContainer.className = 'split-flap';
         flapContainer.innerHTML = `
@@ -21,19 +22,26 @@ class SplitFlapDisplay {
     }
 
     flipToCharacter(targetChar) {
-        const flipInterval = setInterval(() => {
-            const currentChar = this.topFlap.querySelector('.letter').textContent.trim();
-            if (currentChar === targetChar || (targetChar === ' ' && currentChar === '')) {
-                clearInterval(flipInterval);
-            } else {
-                this.flipLetter();
-            }
-        }, 200);
+        this.scheduler.addAnimation(complete => {
+            const flipInterval = setInterval(() => {
+                const currentChar = this.topFlap.querySelector('.letter').textContent.trim();
+                if (currentChar === targetChar || (targetChar === ' ' && currentChar === '')) {
+                    console.log(`Character matched: ${currentChar}, completing animation.`);
+                    clearInterval(flipInterval);
+                    complete();
+                } else {
+                    console.log(`Current: ${currentChar}, Target: ${targetChar}, flipping...`);
+                    this.flipLetter();
+                }
+            }, 200);
+        })
+
+
     }
 
-    flipLetter() {
+    flipLetter() { //Animation
         const currentChar = this.topFlap.querySelector('.letter').textContent.trim();
-        const newChar = this.getNextCharBottom(currentChar);
+        const newChar = this.getNextCharBottom(currentChar); //holt
 
         this.shadowFlap.querySelector('.letter').textContent = this.getNextCharBottom(newChar);
 
@@ -42,7 +50,7 @@ class SplitFlapDisplay {
         this.shadowFlap.querySelector('.letter').textContent = newChar;
 
         setTimeout(() => {
-            this.shadowFlap.querySelector('.letter').textContent = currentChar;
+            this.shadowFlap.querySelector('.letter').textContent = currentChar; //reduce query selector occurs tooo often
 
             this.topFlap.classList.add('notransition');
             this.topFlap.style.transform = 'rotateX(0deg)';
@@ -69,25 +77,3 @@ class SplitFlapDisplay {
         return this.alphabet[(currentIndex + 1) % this.alphabet.length];
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

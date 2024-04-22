@@ -2,7 +2,9 @@ class SplitFlapBoard {
     constructor(parentElement) {
         this.parentElement = parentElement;
         this.rows = [];
+        this.scheduler = new AnimationScheduler();
         this.initializeBoard();
+
     }
 
     initializeBoard() {
@@ -30,25 +32,25 @@ class SplitFlapBoard {
             row.time1.push(new ClockFlap(rowElement, '0'));
         }
 
-        new SplitFlapDisplay(rowElement, ' ');
+        new SplitFlapDisplay(rowElement, ' ', this.scheduler);
 
         for (let i = 0; i < 20; i++) {
-            row.string1.push(new SplitFlapDisplay(rowElement, ' '));
+            row.string1.push(new SplitFlapDisplay(rowElement, ' ', this.scheduler));
         }
 
-        new SplitFlapDisplay(rowElement, ' ');
+        new SplitFlapDisplay(rowElement, ' ',  this.scheduler);
 
         for (let i = 0; i < 4; i++) {
             row.time2.push(new ClockFlap(rowElement, '0'));
         }
 
-        new SplitFlapDisplay(rowElement, ' ');
+        new SplitFlapDisplay(rowElement, ' ',  this.scheduler);
 
         for (let i = 0; i < 20; i++) {
-            row.string2.push(new SplitFlapDisplay(rowElement, ' '));
+            row.string2.push(new SplitFlapDisplay(rowElement, ' ',  this.scheduler));
         }
 
-        row.rawValues = { time1: '', string1: '', time2: '', string2: '' };
+        row.rawValues = {time1: '', string1: '', time2: '', string2: ''};
 
         rowElement.addEventListener('click', () => {
             this.selectRow(rowIndex);
@@ -61,7 +63,7 @@ class SplitFlapBoard {
         if (rowIndex < 0 || rowIndex >= this.rows.length) return;
 
         const row = this.rows[rowIndex];
-        row.rawValues = { time1, string1, time2, string2 };
+        row.rawValues = {time1, string1, time2, string2};
         this.setDisplayContent(row.time1, time1);
         this.setDisplayContent(row.string1, string1);
         this.setDisplayContent(row.time2, time2);
@@ -93,18 +95,3 @@ class SplitFlapBoard {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
