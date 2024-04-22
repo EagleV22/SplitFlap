@@ -63,11 +63,18 @@ class SplitFlapBoard {
         if (rowIndex < 0 || rowIndex >= this.rows.length) return;
 
         const row = this.rows[rowIndex];
-        row.rawValues = {time1, string1, time2, string2};
-        this.setDisplayContent(row.time1, time1);
-        this.setDisplayContent(row.string1, string1);
-        this.setDisplayContent(row.time2, time2);
-        this.setDisplayContent(row.string2, string2);
+        row.rawValues = { time1, string1, time2, string2 };
+
+        this.scheduler.addAnimation((next) => {
+            Promise.all([
+                this.setDisplayContent(row.time1, time1),
+                this.setDisplayContent(row.string1, string1),
+                this.setDisplayContent(row.time2, time2),
+                this.setDisplayContent(row.string2, string2)
+            ]).then(() => {
+                next();
+            });
+        });
         this.scheduler.startAllAnimations();
 
     }
@@ -91,9 +98,12 @@ class SplitFlapBoard {
     }
 
     setDisplayContent(displayArray, content) {
+        const promises = [];
         for (let i = 0; i < displayArray.length; i++) {
             const character = content[i] || '';
-            displayArray[i].flipToCharacter(character);
+            promises.push(displayArray[i].flipToCharacter(character));
         }
+        return Promise.all(promises);
+
     }
 }

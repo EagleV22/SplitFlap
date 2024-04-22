@@ -22,18 +22,17 @@ class SplitFlapDisplay {
     }
 
     flipToCharacter(targetChar) {
-        this.scheduler.addAnimation(() => {
+        return new Promise((resolve) => {
             const flipInterval = setInterval(() => {
                 const currentChar = this.topFlap.querySelector('.letter').textContent.trim();
                 if (currentChar === targetChar || (targetChar === ' ' && currentChar === '')) {
-                    console.log(`Character matched: ${currentChar}, completing animation.`);
                     clearInterval(flipInterval);
+                    resolve();
                 } else {
-                    console.log(`Current: ${currentChar}, Target: ${targetChar}, flipping...`);
                     this.flipLetter();
                 }
             }, 200);
-        })
+        });
 
 
     }
