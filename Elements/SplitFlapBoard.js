@@ -68,6 +68,8 @@ class SplitFlapBoard {
         this.setDisplayContent(row.string1, string1);
         this.setDisplayContent(row.time2, time2);
         this.setDisplayContent(row.string2, string2);
+        this.scheduler.startAllAnimations();
+
     }
 
     selectRow(rowIndex) {

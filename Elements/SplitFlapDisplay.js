@@ -22,13 +22,12 @@ class SplitFlapDisplay {
     }
 
     flipToCharacter(targetChar) {
-        this.scheduler.addAnimation(complete => {
+        this.scheduler.addAnimation(() => {
             const flipInterval = setInterval(() => {
                 const currentChar = this.topFlap.querySelector('.letter').textContent.trim();
                 if (currentChar === targetChar || (targetChar === ' ' && currentChar === '')) {
                     console.log(`Character matched: ${currentChar}, completing animation.`);
                     clearInterval(flipInterval);
-                    complete();
                 } else {
                     console.log(`Current: ${currentChar}, Target: ${targetChar}, flipping...`);
                     this.flipLetter();
