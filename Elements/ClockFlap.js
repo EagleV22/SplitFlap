@@ -23,14 +23,17 @@ class ClockFlap {
     }
 
     flipToCharacter(targetChar) {
-        const flipInterval = setInterval(() => {
-            const currentChar = this.topFlap.querySelector('.letter').textContent.trim();
-            if (currentChar === targetChar || (targetChar === ' ' && currentChar === '')) {
-                clearInterval(flipInterval);
-            } else {
-                this.flipLetter();
-            }
-        }, 700);
+        return new Promise((resolve) => {
+            const flipInterval = setInterval(() => {
+                const currentChar = this.topFlap.querySelector('.letter').textContent.trim();
+                if (currentChar === targetChar || (targetChar === ' ' && currentChar === '')) {
+                    clearInterval(flipInterval);
+                    resolve()
+                } else {
+                    this.flipLetter();
+                }
+            }, 700);
+        });
     }
 
     flipLetter() {
