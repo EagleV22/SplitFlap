@@ -10,7 +10,7 @@ class SplitFlapBoard {
     initializeBoard() {
         const titleRow = document.createElement('div');
         titleRow.className = 'title-row';
-        titleRow.innerHTML = `<div class="title">Departure</div><div class="title">Arrival</div>`;
+        // titleRow.innerHTML = `<div class="title">Departure</div><div class="title">Arrival</div>`;
         this.parentElement.appendChild(titleRow);
 
     }
