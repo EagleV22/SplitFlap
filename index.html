@@ -4,17 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Split Flap</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="Elements/flaps.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="Elements/display.css">
+
+    <script src="Elements/SplitFlapDisplay.js"></script>
+    <script src="Elements/SplitFlapBoard.js"></script>
+    <script src="Elements/ClockFlap.js"></script>
+    <script src="Elements/AnimationScheduler.js"></script>
+
 </head>
 <body>
 
-<div class="split-flap" onclick="flipLetter()">
-    <div class="flap shadow"><span class="letter">B</span></div>
-    <div class="flap top"><span class="letter">A</span></div>
-    <div class="flap bottom"><span class="letter">A</span></div>
-</div>
+    <div id="inputs">
+        <input type="text" id="time1Input" placeholder="Departure Time (HHMM)">
+        <input type="text" id="string1Input" placeholder="Destination">
+        <input type="text" id="time2Input" placeholder="Arrival Time (HHMM)">
+        <input type="text" id="string2Input" placeholder="Origin">
 
-<script src="index.js"></script>
+        <button id="addRowButton">Add Row</button>
+    </div>
+
+    <div id="splitFlapBoard"></div>
+
+    <script>
+        function isValidTime(time) {
+            return /^\d{4}$/.test(time) && time >= '0000' && time <= '2359';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const boardContainer = document.getElementById('splitFlapBoard');
+            const board = new SplitFlapBoard(boardContainer);
+
+            document.getElementById('addRowButton').addEventListener('click', function() {
+                const time1     = document.getElementById('time1Input').value;
+                const string1   = document.getElementById('string1Input').value.toUpperCase();
+                const time2     = document.getElementById('time2Input').value;
+                const string2   = document.getElementById('string2Input').value.toUpperCase();
+
+                if (!isValidTime(time1) || !isValidTime(time2)) {
+                    alert('Please enter valid times in HHMM format.');
+                    return;
+                }
+
+                if (typeof board.selectedRowIndex === 'number') {
+                    board.updateRow(board.selectedRowIndex, time1, string1, time2, string2);
+                } else {
+                    board.addRow();
+                    const newRowIdx = board.rows.length - 1;
+                    board.updateRow(newRowIdx, time1, string1, time2, string2);
+                }
+
+                const sortedRowData = board.rows.map(row => row.rawValues)
+                    .sort((a, b) => a.time1.localeCompare(b.time1));
+
+                sortedRowData.forEach((sortedRow, index) => {
+                    board.updateRow(index, sortedRow.time1, sortedRow.string1, sortedRow.time2, sortedRow.string2);
+                });
+
+                if (typeof board.selectedRowIndex === 'number') {
+                    const selectedRowData = board.rows[board.selectedRowIndex].rawValues;
+                    const newSelectedIndex = sortedRowData.findIndex(row =>
+                        row.time1 === selectedRowData.time1 &&
+                        row.string1 === selectedRowData.string1 &&
+                        row.time2 === selectedRowData.time2 &&
+                        row.string2 === selectedRowData.string2
+                    );
+                    board.selectRow(newSelectedIndex);
+                }
+
+                document.getElementById('time1Input').value = '';
+                document.getElementById('string1Input').value = '';
+                document.getElementById('time2Input').value = '';
+                document.getElementById('string2Input').value = '';
+            });
+        });
+    </script>
 
 </body>
 </html>
